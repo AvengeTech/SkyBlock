@@ -1,0 +1,17 @@
+name: SkyBlock
+description: SkyBlock core for AvengeTech
+author: mal0ne_23
+version: 2.0.0
+main: skyblock\SkyBlock
+api: 5.0.0
+depend: [Core]
+permissions:
+ skyblock.perm:
+  description: Bleh
+  default: true
+ skyblock.staff:
+  description: Blehbleh
+  default: op
+ skyblock.tier3:
+  description: Blehblehbleh
+  default: op

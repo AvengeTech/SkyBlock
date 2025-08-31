@@ -1,0 +1,32 @@
+<?php
+
+declare(strict_types=1);
+
+namespace skyblock\islands\challenge\levels\level14;
+
+use pocketmine\block\utils\MobHeadType;
+use pocketmine\block\VanillaBlocks;
+use pocketmine\event\entity\EntityItemPickupEvent;
+use pocketmine\player\Player;
+use skyblock\event\AutoInventoryCollectEvent;
+use skyblock\islands\challenge\Challenge;
+
+class CollectWitherSkullChallenge extends Challenge{
+
+	public function onCollectEvent(EntityItemPickupEvent|AutoInventoryCollectEvent $event, Player $player) : bool{
+		if($this->isCompleted()) return false;
+
+		$item = $event->getItem();
+
+		if(!$item->equals(VanillaBlocks::MOB_HEAD()->setMobHeadType(MobHeadType::WITHER_SKELETON())->asItem(), false, false)) return false;
+
+		$this->progress["collected"]["progress"] += $item->getCount();
+
+		if($this->progress["collected"]["progress"] < $this->progress["collected"]["needed"]) return false;
+	
+		$this->progress["collected"]["progress"] = $this->progress["collected"]["needed"];
+		$this->onCompleted($player);
+		return true;
+	}
+
+}

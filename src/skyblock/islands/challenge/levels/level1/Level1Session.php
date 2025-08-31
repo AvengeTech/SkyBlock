@@ -1,0 +1,13 @@
+<?php
+
+declare(strict_types=1);
+
+namespace skyblock\islands\challenge\levels\level1;
+
+use skyblock\islands\challenge\levels\LevelSession;
+
+class Level1Session extends LevelSession{
+
+	public function getLevel() : int{ return 1; }
+
+}
